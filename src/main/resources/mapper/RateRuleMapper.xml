@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lxk.enterprisecreditsystem.mapper.RateRuleMapper">
+
+    <resultMap id="BaseResultMap" type="com.lxk.enterprisecreditsystem.domain.RateRule">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="type" column="type" jdbcType="VARCHAR"/>
+            <result property="applicableArea" column="applicable_area" jdbcType="VARCHAR"/>
+            <result property="period" column="period" jdbcType="VARCHAR"/>
+            <result property="periodSocreUpper" column="period_socre_upper" jdbcType="VARCHAR"/>
+            <result property="manageObject" column="manage_object" jdbcType="VARCHAR"/>
+            <result property="objectType" column="object_type" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,type,
+        applicable_area,period,period_socre_upper,
+        manage_object,object_type
+    </sql>
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lxk.enterprisecreditsystem.mapper.TotalBlacklistMapper">
+
+    <resultMap id="BaseResultMap" type="com.lxk.enterprisecreditsystem.domain.TotalBlacklist">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="creditCode" column="credit_code" jdbcType="VARCHAR"/>
+            <result property="punish" column="punish" jdbcType="VARCHAR"/>
+            <result property="passPerson" column="pass_person" jdbcType="VARCHAR"/>
+            <result property="passDepartment" column="pass_department" jdbcType="VARCHAR"/>
+            <result property="address" column="address" jdbcType="VARCHAR"/>
+            <result property="punishDate" column="punish_date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,credit_code,
+        punish,pass_person,pass_department,
+        address,punish_date
+    </sql>
+</mapper>

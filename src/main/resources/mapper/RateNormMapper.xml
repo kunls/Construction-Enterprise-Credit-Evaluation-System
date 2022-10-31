@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lxk.enterprisecreditsystem.mapper.RateNormMapper">
+
+    <resultMap id="BaseResultMap" type="com.lxk.enterprisecreditsystem.domain.RateNorm">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="classification" column="classification" jdbcType="VARCHAR"/>
+            <result property="norm" column="norm" jdbcType="VARCHAR"/>
+            <result property="input" column="input" jdbcType="VARCHAR"/>
+            <result property="scoreRange" column="score_range" jdbcType="VARCHAR"/>
+            <result property="upperLimit" column="upper_limit" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,classification,norm,
+        input,score_range,upper_limit
+    </sql>
+</mapper>
