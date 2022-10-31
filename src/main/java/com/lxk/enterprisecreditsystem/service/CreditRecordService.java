@@ -3,6 +3,8 @@ package com.lxk.enterprisecreditsystem.service;
 import com.lxk.enterprisecreditsystem.domain.CreditRecord;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
 * @author mia
 * @description 针对表【credit_record_table(（个人、企业）信用行为评定记录)】的数据库操作Service
@@ -10,4 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface CreditRecordService extends IService<CreditRecord> {
 
+    List<CreditRecord> getPersonData(Integer page, Integer pageSize, String keyword);
+
+    List<CreditRecord> getEnterpriseData(Integer page, Integer pageSize, String keyword);
 }

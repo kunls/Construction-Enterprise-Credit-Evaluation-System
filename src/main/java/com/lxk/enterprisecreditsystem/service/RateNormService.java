@@ -3,6 +3,8 @@ package com.lxk.enterprisecreditsystem.service;
 import com.lxk.enterprisecreditsystem.domain.RateNorm;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
 * @author mia
 * @description 针对表【rate_norm_table(信用评价标准管理)】的数据库操作Service
@@ -10,4 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface RateNormService extends IService<RateNorm> {
 
+    List<RateNorm> getData(Integer page, Integer pageSize, String keyword);
 }

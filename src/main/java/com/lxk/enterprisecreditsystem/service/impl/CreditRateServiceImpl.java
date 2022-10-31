@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lxk.enterprisecreditsystem.domain.CreditRate;
-import com.lxk.enterprisecreditsystem.dto.creditRateDto.EnterpriseDTO1;
-import com.lxk.enterprisecreditsystem.dto.creditRateDto.PersonDTO1;
+import com.lxk.enterprisecreditsystem.dto.creditRateDto.EnterpriseDTO;
+import com.lxk.enterprisecreditsystem.dto.creditRateDto.PersonDTO;
 import com.lxk.enterprisecreditsystem.service.CreditRateService;
 import com.lxk.enterprisecreditsystem.mapper.CreditRateMapper;
 import org.springframework.beans.BeanUtils;
@@ -94,7 +94,7 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         //1.若是企业用户,查找个人
         if (flag.equals(1) && role.equals(1)) {
             for (CreditRate record : result.getRecords()) {
-                PersonDTO1 dto1 = new PersonDTO1();
+                PersonDTO dto1 = new PersonDTO();
                 BeanUtils.copyProperties(record, dto1);
                 dtoList.add(dto1);
             }
@@ -102,7 +102,7 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         //2.若是企业用户,查找企业
         else if (flag.equals(1) && role.equals(2)) {
             for (CreditRate record : result.getRecords()) {
-                EnterpriseDTO1 dto1 = new EnterpriseDTO1();
+                EnterpriseDTO dto1 = new EnterpriseDTO();
                 BeanUtils.copyProperties(record, dto1);
                 dtoList.add(dto1);
             }

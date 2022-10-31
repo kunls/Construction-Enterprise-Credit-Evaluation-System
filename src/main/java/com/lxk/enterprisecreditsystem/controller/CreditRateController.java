@@ -1,8 +1,6 @@
 package com.lxk.enterprisecreditsystem.controller;
 
 import com.lxk.enterprisecreditsystem.domain.CreditRate;
-import com.lxk.enterprisecreditsystem.dto.creditRateDto.EnterpriseDTO1;
-import com.lxk.enterprisecreditsystem.dto.creditRateDto.PersonDTO1;
 import com.lxk.enterprisecreditsystem.service.CreditRateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

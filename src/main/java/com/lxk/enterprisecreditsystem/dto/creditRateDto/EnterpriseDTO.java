@@ -6,7 +6,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class EnterpriseDTO1 extends CreditRate {
+public class EnterpriseDTO extends CreditRate {
     private String name;
     private String idCard;
     private String category;
