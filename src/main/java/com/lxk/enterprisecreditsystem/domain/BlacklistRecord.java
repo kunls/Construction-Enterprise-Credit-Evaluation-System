@@ -33,12 +33,12 @@ public class BlacklistRecord implements Serializable {
     /**
      * 操作
      */
-    private String opration;
+    private String operation;
 
     /**
      * 模块
      */
-    private String moudule;
+    private String module;
 
     /**
      * 主体名称

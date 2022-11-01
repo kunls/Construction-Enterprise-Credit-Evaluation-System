@@ -10,14 +10,14 @@
             <result property="type" column="type" jdbcType="VARCHAR"/>
             <result property="applicableArea" column="applicable_area" jdbcType="VARCHAR"/>
             <result property="period" column="period" jdbcType="VARCHAR"/>
-            <result property="periodSocreUpper" column="period_socre_upper" jdbcType="VARCHAR"/>
+            <result property="periodScoreUpper" column="period_score_upper" jdbcType="VARCHAR"/>
             <result property="manageObject" column="manage_object" jdbcType="VARCHAR"/>
             <result property="objectType" column="object_type" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id,name,type,
-        applicable_area,period,period_socre_upper,
+        applicable_area,period,period_score_upper,
         manage_object,object_type
     </sql>
 </mapper>

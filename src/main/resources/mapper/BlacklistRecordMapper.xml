@@ -8,15 +8,15 @@
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
             <result property="department" column="department" jdbcType="VARCHAR"/>
-            <result property="opration" column="opration" jdbcType="VARCHAR"/>
-            <result property="moudule" column="moudule" jdbcType="VARCHAR"/>
+            <result property="operation" column="operation" jdbcType="VARCHAR"/>
+            <result property="module" column="module" jdbcType="VARCHAR"/>
             <result property="mainName" column="main_name" jdbcType="VARCHAR"/>
             <result property="opId" column="op_id" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id,name,department,
-        opration,moudule,main_name,
+        operation,module,main_name,
         op_id
     </sql>
 </mapper>

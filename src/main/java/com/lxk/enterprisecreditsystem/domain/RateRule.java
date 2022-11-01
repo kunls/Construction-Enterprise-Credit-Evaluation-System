@@ -43,7 +43,7 @@ public class RateRule implements Serializable {
     /**
      * 周期分数上限
      */
-    private String periodSocreUpper;
+    private String periodScoreUpper;
 
     /**
      * 管理对象
