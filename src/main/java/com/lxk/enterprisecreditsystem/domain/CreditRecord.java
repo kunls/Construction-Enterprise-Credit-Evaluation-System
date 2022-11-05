@@ -1,22 +1,23 @@
 package com.lxk.enterprisecreditsystem.domain;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
 
 /**
  * （个人、企业）信用行为评定记录
+ *
  * @TableName credit_record_table
  */
-@TableName(value ="credit_record_table")
+@TableName(value = "credit_record_table")
 @Data
 public class CreditRecord implements Serializable {
     /**
-     * 
+     *
      */
     @TableId
     private Long id;

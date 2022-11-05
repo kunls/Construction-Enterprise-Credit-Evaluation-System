@@ -1,21 +1,22 @@
 package com.lxk.enterprisecreditsystem.domain;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * 黑名单操作记录
+ *
  * @TableName blacklist_record_table
  */
-@TableName(value ="blacklist_record_table")
+@TableName(value = "blacklist_record_table")
 @Data
 public class BlacklistRecord implements Serializable {
     /**
-     * 
+     *
      */
     @TableId
     private Long id;

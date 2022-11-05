@@ -12,9 +12,9 @@ import java.util.List;
 */
 public interface BlacklistService extends IService<Blacklist> {
 
-    List<Blacklist> getPersonBlacklist(Integer page, Integer pageSize, String keyword, String idCard);
+    List<Blacklist> getPersonBlacklist(Integer page, Integer pageSize, String keyword);
 
-    List<Blacklist> getEnterpriseBlacklist(Integer page, Integer pageSize, String keyword, String idCard);
+    List<Blacklist> getEnterpriseBlacklist(Integer page, Integer pageSize, String keyword);
 
     List<Blacklist> getPersonHistory(Integer page, Integer pageSize, String keyword, String idCard);
 

@@ -6,57 +6,55 @@ import com.lxk.enterprisecreditsystem.domain.TotalBlacklist;
 import com.lxk.enterprisecreditsystem.service.BlacklistRecordService;
 import com.lxk.enterprisecreditsystem.service.BlacklistService;
 import com.lxk.enterprisecreditsystem.service.TotalBlacklistService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
 public class BlacklistController {
-    @Autowired
+    @Resource
     private BlacklistService blacklistService;
-    @Autowired
+    @Resource
     private TotalBlacklistService totalBlacklistService;
-    @Autowired
+    @Resource
     private BlacklistRecordService blacklistRecordService;
 
     /**
      * 获取个人黑名单列表
      *
-     * @param page
-     * @param pageSize
-     * @param keyword
-     * @param idCard
-     * @return
+     * @param page     页码
+     * @param pageSize 页大小
+     * @param keyword  搜索关键词
+     * @return 个人黑名单列表
      */
     @GetMapping("/PersonalBlacklist/getData")
-    public List<Blacklist> getPersonBlacklist(Integer page, Integer pageSize, String keyword, String idCard) {
-        return blacklistService.getPersonBlacklist(page, pageSize, keyword, idCard);
+    public List<Blacklist> getPersonBlacklist(Integer page, Integer pageSize, String keyword) {
+        return blacklistService.getPersonBlacklist(page, pageSize, keyword);
     }
 
     /**
      * 获取企业黑名单列表
      *
-     * @param page
-     * @param pageSize
-     * @param keyword
-     * @param idCard
-     * @return
+     * @param page     页码
+     * @param pageSize 页大小
+     * @param keyword  搜索关键词
+     * @return 企业黑名单列表
      */
     @GetMapping("/EnterpriseBlacklist/getData")
-    public List<Blacklist> getEnterpriseBlacklist(Integer page, Integer pageSize, String keyword, String idCard) {
-        return blacklistService.getEnterpriseBlacklist(page, pageSize, keyword, idCard);
+    public List<Blacklist> getEnterpriseBlacklist(Integer page, Integer pageSize, String keyword) {
+        return blacklistService.getEnterpriseBlacklist(page, pageSize, keyword);
     }
 
     /**
      * 获取个人黑名单历史记录
      *
-     * @param page
-     * @param pageSize
-     * @param keyword
-     * @param idCard
-     * @return
+     * @param page     页码
+     * @param pageSize 页大小
+     * @param keyword  搜索关键词
+     * @param idCard   身份证号
+     * @return 个人黑名单历史记录
      */
     @GetMapping("/PersonalBlacklistHistory/getData")
     public List<Blacklist> getPersonHistory(Integer page, Integer pageSize, String keyword, String idCard) {
@@ -66,11 +64,11 @@ public class BlacklistController {
     /**
      * 获取企业黑名单历史记录
      *
-     * @param page
-     * @param pageSize
-     * @param keyword
-     * @param idCard
-     * @return
+     * @param page     页码
+     * @param pageSize 页大小
+     * @param keyword  搜索关键词
+     * @param idCard   统一社会信用代码
+     * @return 企业黑名单历史记录
      */
     @GetMapping("/EnterpriseBlacklistHistory/getData")
     public List<Blacklist> getEnterpriseHistory(Integer page, Integer pageSize, String keyword, String idCard) {
@@ -80,10 +78,10 @@ public class BlacklistController {
     /**
      * 获取总黑名单列表
      *
-     * @param page
-     * @param pageSize
-     * @param keyword
-     * @return
+     * @param page     页码
+     * @param pageSize 页大小
+     * @param keyword  搜索关键词
+     * @return 总黑名单列表
      */
     @GetMapping("/Blacklist/getTotalBlacklist")
     public List<TotalBlacklist> getTotalBlacklist(Integer page, Integer pageSize, String keyword) {
@@ -93,10 +91,10 @@ public class BlacklistController {
     /**
      * 获取黑名单操作记录
      *
-     * @param page
-     * @param pageSize
-     * @param keyword
-     * @return
+     * @param page     页码
+     * @param pageSize 页大小
+     * @param keyword  搜索关键词
+     * @return 黑名单记录列表
      */
     @GetMapping("/BlacklistRecord/getRecord")
     public List<BlacklistRecord> getRecord(Integer page, Integer pageSize, String keyword) {

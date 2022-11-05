@@ -6,14 +6,18 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lxk.enterprisecreditsystem.domain.CreditRate;
 import com.lxk.enterprisecreditsystem.dto.creditRateDto.EnterpriseDTO;
 import com.lxk.enterprisecreditsystem.dto.creditRateDto.PersonDTO;
-import com.lxk.enterprisecreditsystem.service.CreditRateService;
 import com.lxk.enterprisecreditsystem.mapper.CreditRateMapper;
+import com.lxk.enterprisecreditsystem.service.CreditRateService;
+import com.lxk.enterprisecreditsystem.utils.UserHolder;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.lxk.enterprisecreditsystem.utils.RedisConstant.USER_TYPE;
 
 /**
  * @author mia
@@ -39,35 +43,37 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
     /**
      * 验证用户身份 1代表企业 2代表县级 3代表市级
      *
-     * @return
+     * @return 返回用户身份
      */
     private Integer verifyFlag() {
-        //ToDo 邮箱还未添加
-        String flag = stringRedisTemplate.opsForValue().get("user:" + "flag");
-        return Integer.valueOf(flag);
+        String flag = stringRedisTemplate.opsForValue().get(USER_TYPE + UserHolder.getUser().getEmail());
+        if (flag != null) {
+            return Integer.valueOf(flag);
+        }
+        return 0;
     }
 
     /**
      * 获取信用列表
      *
-     * @param page
-     * @param pageSize
-     * @param keyword
-     * @param ruleId
-     * @param role
-     * @return
+     * @param page     页码
+     * @param pageSize 页大小
+     * @param keyword  搜索关键词
+     * @param ruleId   规则id
+     * @param role     企业or个人
+     * @return 企业or个人信用评定列表
      */
     private List<CreditRate> getList(Integer page, Integer pageSize, String keyword, String ruleId, Integer role) {
         LambdaQueryWrapper<CreditRate> wrapper = new LambdaQueryWrapper<>();
         //1.准备分页
         Page<CreditRate> pages = new Page<>(page, pageSize);
         //2.是否携带关键字
-        if (keyword != null && keyword != "") {
+        if (keyword != null && !keyword.equals("")) {
             wrapper.like(CreditRate::getName, keyword).or().like(CreditRate::getIdCard, keyword);
         }
         wrapper.eq(CreditRate::getRole, role);
         //3.是否携带规则
-        if (ruleId != null && ruleId != "") {
+        if (ruleId != null && !ruleId.equals("")) {
             wrapper.eq(CreditRate::getRuleId, ruleId);
         }
         //4.验证登陆者身份
@@ -76,21 +82,19 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         //4.查询
         Page<CreditRate> result = this.page(pages, wrapper);
         //5.转成dto
-        List<CreditRate> dtoList = trans2Dto(role, flag, result);
-        return dtoList;
+        return trans2Dto(role, flag, result);
     }
 
     /**
      * 将数据库查出的实体对象转为Dto对象
      *
-     * @param role
-     * @param flag
-     * @param result
-     * @return
+     * @param role   企业or个人
+     * @param flag   企业or县级or市级
+     * @param result 企业对象列表 or 个人对象列表
+     * @return 企业Dto or 个人Dto
      */
     private List<CreditRate> trans2Dto(Integer role, Integer flag, Page<CreditRate> result) {
         ArrayList<CreditRate> dtoList = new ArrayList<>();
-        ;
         //1.若是企业用户,查找个人
         if (flag.equals(1) && role.equals(1)) {
             for (CreditRate record : result.getRecords()) {

@@ -4,20 +4,21 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
-import lombok.Data;
 
 /**
  * （个人、企业）信用行为评定列表（企业，县级，市级）
+ *
  * @TableName credit_rate_table
  */
-@TableName(value ="credit_rate_table")
+@TableName(value = "credit_rate_table")
 @Data
 public class CreditRate implements Serializable {
     /**
-     * 
+     *
      */
     @TableId(type = IdType.AUTO)
     private Long id;

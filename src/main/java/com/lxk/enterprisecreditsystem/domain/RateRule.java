@@ -1,21 +1,22 @@
 package com.lxk.enterprisecreditsystem.domain;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * 信用评价标准设定
+ *
  * @TableName rate_rule_table
  */
-@TableName(value ="rate_rule_table")
+@TableName(value = "rate_rule_table")
 @Data
 public class RateRule implements Serializable {
     /**
-     * 
+     *
      */
     @TableId
     private Long id;

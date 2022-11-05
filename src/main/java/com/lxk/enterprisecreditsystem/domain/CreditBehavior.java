@@ -1,21 +1,22 @@
 package com.lxk.enterprisecreditsystem.domain;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * （个人、企业）信用行为列表（县级、市级）
+ *
  * @TableName credit_behavior_table
  */
-@TableName(value ="credit_behavior_table")
+@TableName(value = "credit_behavior_table")
 @Data
 public class CreditBehavior implements Serializable {
     /**
-     * 
+     *
      */
     @TableId
     private Long id;
