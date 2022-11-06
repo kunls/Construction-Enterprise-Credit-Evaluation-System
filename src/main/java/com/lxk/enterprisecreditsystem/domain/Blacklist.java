@@ -71,6 +71,10 @@ public class Blacklist implements Serializable {
      * 1个人2企业
      */
     private Integer role;
+    /**
+     * 处罚决定
+     */
+    private String punishContent;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

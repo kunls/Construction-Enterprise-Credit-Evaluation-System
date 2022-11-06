@@ -5,23 +5,25 @@
 <mapper namespace="com.lxk.enterprisecreditsystem.mapper.BlacklistMapper">
 
     <resultMap id="BaseResultMap" type="com.lxk.enterprisecreditsystem.domain.Blacklist">
-            <id property="id" column="id" jdbcType="BIGINT"/>
-            <result property="name" column="name" jdbcType="VARCHAR"/>
-            <result property="idCard" column="id_card" jdbcType="VARCHAR"/>
-            <result property="content" column="content" jdbcType="VARCHAR"/>
-            <result property="execTime" column="exec_time" jdbcType="TIMESTAMP"/>
-            <result property="finishTime" column="finish_time" jdbcType="TIMESTAMP"/>
-            <result property="passDep" column="pass_dep" jdbcType="VARCHAR"/>
-            <result property="passPerson" column="pass_person" jdbcType="VARCHAR"/>
-            <result property="address" column="address" jdbcType="VARCHAR"/>
-            <result property="passTime" column="pass_time" jdbcType="TIMESTAMP"/>
-            <result property="role" column="role" jdbcType="INTEGER"/>
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="idCard" column="id_card" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="execTime" column="exec_time" jdbcType="TIMESTAMP"/>
+        <result property="finishTime" column="finish_time" jdbcType="TIMESTAMP"/>
+        <result property="passDep" column="pass_dep" jdbcType="VARCHAR"/>
+        <result property="passPerson" column="pass_person" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="passTime" column="pass_time" jdbcType="TIMESTAMP"/>
+        <result property="role" column="role" jdbcType="INTEGER"/>
+        <result property="punishContent" column="punish_content" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,name,id_card,
+        id
+        ,name,id_card,
         content,exec_time,finish_time,
         pass_dep,pass_person,address,
-        pass_time,role
+        pass_time,role,punish_content
     </sql>
 </mapper>

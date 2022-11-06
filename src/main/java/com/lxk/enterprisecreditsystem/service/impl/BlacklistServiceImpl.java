@@ -39,6 +39,22 @@ public class BlacklistServiceImpl extends ServiceImpl<BlacklistMapper, Blacklist
         return getBlacklist(page, pageSize, keyword, 2, idCard);
     }
 
+    @Override
+    public Boolean addPersonData(Blacklist form) {
+        if (form == null) {
+            return false;
+        }
+        return this.save(form);
+    }
+
+    @Override
+    public Boolean addEnterpriseData(Blacklist form) {
+        if (form == null) {
+            return false;
+        }
+        return this.save(form);
+    }
+
     /**
      * 获取黑名单
      *

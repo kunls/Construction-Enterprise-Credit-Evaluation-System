@@ -7,6 +7,8 @@ import com.lxk.enterprisecreditsystem.service.BlacklistRecordService;
 import com.lxk.enterprisecreditsystem.service.BlacklistService;
 import com.lxk.enterprisecreditsystem.service.TotalBlacklistService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -99,5 +101,15 @@ public class BlacklistController {
     @GetMapping("/BlacklistRecord/getRecord")
     public List<BlacklistRecord> getRecord(Integer page, Integer pageSize, String keyword) {
         return blacklistRecordService.getRecord(page, pageSize, keyword);
+    }
+
+    @PostMapping("/PersonalBlacklist/addData")
+    public Boolean addPersonData(@RequestBody Blacklist form) {
+        return blacklistService.addPersonData(form);
+    }
+
+    @PostMapping("/EnterpriseBlacklist/addData")
+    public Boolean addEnterpriseData(@RequestBody Blacklist form) {
+        return blacklistService.addEnterpriseData(form);
     }
 }
