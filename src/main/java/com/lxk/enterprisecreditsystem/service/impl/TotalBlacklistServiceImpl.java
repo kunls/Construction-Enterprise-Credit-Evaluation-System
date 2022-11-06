@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lxk.enterprisecreditsystem.domain.TotalBlacklist;
+import com.lxk.enterprisecreditsystem.dto.blacklistDto.TotalBlacklistDTO;
 import com.lxk.enterprisecreditsystem.mapper.TotalBlacklistMapper;
 import com.lxk.enterprisecreditsystem.service.TotalBlacklistService;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,14 @@ public class TotalBlacklistServiceImpl extends ServiceImpl<TotalBlacklistMapper,
         //3.查询
         Page<TotalBlacklist> result = this.page(pages, wrapper);
         return result.getRecords();
+    }
+
+    @Override
+    public Boolean addBlacklistData(TotalBlacklistDTO form) {
+        if (form == null) {
+            return false;
+        }
+        return this.save(form);
     }
 }
 

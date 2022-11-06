@@ -3,6 +3,7 @@ package com.lxk.enterprisecreditsystem.controller;
 import com.lxk.enterprisecreditsystem.domain.Blacklist;
 import com.lxk.enterprisecreditsystem.domain.BlacklistRecord;
 import com.lxk.enterprisecreditsystem.domain.TotalBlacklist;
+import com.lxk.enterprisecreditsystem.dto.blacklistDto.TotalBlacklistDTO;
 import com.lxk.enterprisecreditsystem.service.BlacklistRecordService;
 import com.lxk.enterprisecreditsystem.service.BlacklistService;
 import com.lxk.enterprisecreditsystem.service.TotalBlacklistService;
@@ -111,5 +112,10 @@ public class BlacklistController {
     @PostMapping("/EnterpriseBlacklist/addData")
     public Boolean addEnterpriseData(@RequestBody Blacklist form) {
         return blacklistService.addEnterpriseData(form);
+    }
+
+    @PostMapping("/Blacklist/addData")
+    public Boolean addBlacklistData(@RequestBody TotalBlacklistDTO form) {
+        return totalBlacklistService.addBlacklistData(form);
     }
 }
