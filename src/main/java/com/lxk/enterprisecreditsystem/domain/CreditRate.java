@@ -101,6 +101,111 @@ public class CreditRate implements Serializable {
      */
     private Integer role;
 
+    /**
+     * 附件地址
+     */
+    private String annexFile;
+
+    /**
+     * 企业是否知晓
+     */
+    private String hasKnown;
+
+    /**
+     * 企业是否有异议
+     */
+    private String hasDissent;
+
+    /**
+     * 企业异议备注
+     */
+    private String entRemark;
+
+    /**
+     * 企业异议附件
+     */
+    private String entAnnexFile;
+
+    /**
+     * 办理部门
+     */
+    private String reviewDep;
+
+    /**
+     * 办理人员
+     */
+    private String reviewPerson;
+
+    /**
+     * 县级异议复核结果
+     */
+    private String reviewResult;
+
+    /**
+     * 复核时间
+     */
+    private Date reviewTime;
+
+    /**
+     * 县级异议复核备注
+     */
+    private String reviewRemark;
+
+    /**
+     * 县级初审部门
+     */
+    private String countyDep;
+
+    /**
+     * 县级初审人员
+     */
+    private String countyPerson;
+
+    /**
+     * 县级初审结果
+     */
+    private String countyVerifyResult;
+
+    /**
+     * 县级初审时间
+     */
+    private Date countyVerifyTime;
+
+    /**
+     * 县级初审备注
+     */
+    private String countyRemark;
+
+    /**
+     * 市级审核部门
+     */
+    private String cityDep;
+
+    /**
+     * 市级审核人员
+     */
+    private String cityPerson;
+
+    /**
+     * 市级审核结果
+     */
+    private String cityVerifyResult;
+
+    /**
+     * 市级审核时间
+     */
+    private Date cityVerifyTime;
+
+    /**
+     * 市级审核备注
+     */
+    private String cityRemark;
+
+    /**
+     * 1良好行为2不良行为
+     */
+    private Integer behaviorType;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }

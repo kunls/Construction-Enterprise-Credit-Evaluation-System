@@ -22,6 +22,27 @@
             <result property="ruleId" column="rule_id" jdbcType="BIGINT"/>
             <result property="flag" column="flag" jdbcType="INTEGER"/>
             <result property="role" column="role" jdbcType="INTEGER"/>
+            <result property="annexFile" column="annex_file" jdbcType="VARCHAR"/>
+            <result property="hasKnown" column="has_known" jdbcType="VARCHAR"/>
+            <result property="hasDissent" column="has_dissent" jdbcType="VARCHAR"/>
+            <result property="entRemark" column="ent_remark" jdbcType="VARCHAR"/>
+            <result property="entAnnexFile" column="ent_annex_file" jdbcType="VARCHAR"/>
+            <result property="reviewDep" column="review_dep" jdbcType="VARCHAR"/>
+            <result property="reviewPerson" column="review_person" jdbcType="VARCHAR"/>
+            <result property="reviewResult" column="review_result" jdbcType="VARCHAR"/>
+            <result property="reviewTime" column="review_time" jdbcType="TIMESTAMP"/>
+            <result property="reviewRemark" column="review_remark" jdbcType="VARCHAR"/>
+            <result property="countyDep" column="county_dep" jdbcType="VARCHAR"/>
+            <result property="countyPerson" column="county_person" jdbcType="VARCHAR"/>
+            <result property="countyVerifyResult" column="county_verify_result" jdbcType="VARCHAR"/>
+            <result property="countyVerifyTime" column="county_verify_time" jdbcType="TIMESTAMP"/>
+            <result property="countyRemark" column="county_remark" jdbcType="VARCHAR"/>
+            <result property="cityDep" column="city_dep" jdbcType="VARCHAR"/>
+            <result property="cityPerson" column="city_person" jdbcType="VARCHAR"/>
+            <result property="cityVerifyResult" column="city_verify_result" jdbcType="VARCHAR"/>
+            <result property="cityVerifyTime" column="city_verify_time" jdbcType="TIMESTAMP"/>
+            <result property="cityRemark" column="city_remark" jdbcType="VARCHAR"/>
+            <result property="behaviorType" column="behavior_type" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -30,6 +51,13 @@
         handler,handle_dep,address,
         handle_time,status,content,
         remark,behavior_time,rule_id,
-        flag,role
+        flag,role,annex_file,
+        has_known,has_dissent,ent_remark,
+        ent_annex_file,review_dep,review_person,
+        review_result,review_time,review_remark,
+        county_dep,county_person,county_verify_result,
+        county_verify_time,county_remark,city_dep,
+        city_person,city_verify_result,city_verify_time,
+        city_remark,behavior_type
     </sql>
 </mapper>

@@ -2,10 +2,7 @@ package com.lxk.enterprisecreditsystem.controller;
 
 import com.lxk.enterprisecreditsystem.domain.CreditRate;
 import com.lxk.enterprisecreditsystem.service.CreditRateService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -43,13 +40,59 @@ public class CreditRateController {
         return rateService.getPersonData(page, pageSize, keyword, ruleId);
     }
 
-    @PostMapping("/PersonalCreditRateList/addData")
+    /**
+     * 新增个人良好行为评定数据(企业)
+     *
+     * @param form 个人良好行为表单
+     * @return 是否成功
+     */
+    @PostMapping("/PersonalCreditRateList/enterprise/goodBehavior/addData")
     public Boolean addPersonData(@RequestBody CreditRate form) {
         return rateService.addPersonData(form);
     }
 
-    @PostMapping("/EnterpriseCreditRateList/addData")
+    /**
+     * 新增企业良好行为评定数据(企业)
+     *
+     * @param form 企业良好行为表单
+     * @return 是否成功
+     */
+    @PostMapping("/EnterpriseCreditRateList/enterprise/goodBehavior/addData")
     public Boolean addEnterpriseData(@RequestBody CreditRate form) {
         return rateService.addEnterpriseData(form);
+    }
+
+    /**
+     * 编辑县级初审个人良好行为数据(县级)
+     *
+     * @param form 个人良好行为表单
+     * @param id   此表单数据id
+     * @return 是否成功
+     */
+    @PutMapping("/PersonalCreditRateList/county/goodBehavior/addData")
+    public Boolean addGoodPersonData(@RequestBody CreditRate form, Long id) {
+        return rateService.addGoodPersonData(form, id);
+    }
+
+    /**
+     * 编辑县级初审企业良好行为数据(县级)
+     *
+     * @param form 企业良好行为表单
+     * @param id   此表单数据id
+     * @return 是否成功
+     */
+    @PutMapping("/EnterpriseCreditRateList/county/goodBehavior/addData")
+    public Boolean addGoodEnterpriseData(@RequestBody CreditRate form, Long id) {
+        return rateService.addGoodEnterpriseData(form, id);
+    }
+
+    @PutMapping("/PersonalCreditRateList/enterprise/badBehavior/addData")
+    public Boolean addBadPersonData(@RequestBody CreditRate form, Long id) {
+        return rateService.addBadPersonData(form, id);
+    }
+
+    @PutMapping("/EnterpriseCreditRateList/enterprise/badBehavior/addData")
+    public Boolean addBadEnterpriseData(@RequestBody CreditRate form, Long id) {
+        return rateService.addBadEnterpriseData(form, id);
     }
 }

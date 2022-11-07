@@ -52,6 +52,84 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
     }
 
     @Override
+    public Boolean addGoodPersonData(CreditRate form, Long id) {
+        //1.检查表单是否为空
+        if (form == null) {
+            return false;
+        }
+        //2.查看数据库是否存在此表单
+        CreditRate result = this.getById(id);
+        //2.1若不存在
+        if (result == null) {
+            return false;
+        }
+        //2.2若存在,将县级初审备注及结果保存到数据库
+        result.setCountyRemark(form.getCountyRemark());
+        result.setCountyVerifyResult(form.getCountyVerifyResult());
+        return this.saveOrUpdate(result);
+    }
+
+    @Override
+    public Boolean addGoodEnterpriseData(CreditRate form, Long id) {
+        //1.检查表单是否为空
+        if (form == null) {
+            return false;
+        }
+        //2.查看数据库是否存在此表单
+        CreditRate result = this.getById(id);
+        //2.1若不存在
+        if (result == null) {
+            return false;
+        }
+        //2.2若存在,将县级初审备注及结果保存到数据库
+        result.setCountyRemark(form.getCountyRemark());
+        result.setCountyVerifyResult(form.getCountyVerifyResult());
+        return this.saveOrUpdate(result);
+    }
+
+    @Override
+    public Boolean addBadPersonData(CreditRate form, Long id) {
+        //1.检查表单是否为空
+        if (form == null) {
+            return false;
+        }
+        //2.查看数据库是否存在此表单
+        CreditRate result = this.getById(id);
+        //2.1若不存在
+        if (result == null) {
+            return false;
+        }
+        //2.2若存在
+        //Todo 保存企业异议文件
+        //result.setEntAnnexFile();
+        result.setEntRemark(form.getEntRemark());
+        result.setHasDissent(form.getHasDissent());
+        result.setHasKnown(form.getHasKnown());
+        return this.saveOrUpdate(result);
+    }
+
+    @Override
+    public Boolean addBadEnterpriseData(CreditRate form, Long id) {
+        //1.检查表单是否为空
+        if (form == null) {
+            return false;
+        }
+        //2.查看数据库是否存在此表单
+        CreditRate result = this.getById(id);
+        //2.1若不存在
+        if (result == null) {
+            return false;
+        }
+        //2.2若存在
+        //Todo 保存企业异议文件
+        //result.setEntAnnexFile();
+        result.setEntRemark(form.getEntRemark());
+        result.setHasDissent(form.getHasDissent());
+        result.setHasKnown(form.getHasKnown());
+        return this.saveOrUpdate(result);
+    }
+
+    @Override
     public List<CreditRate> getEnterpriseData(Integer page, Integer pageSize, String keyword, String ruleId) {
         return getList(page, pageSize, keyword, ruleId, 2);
     }
