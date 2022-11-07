@@ -86,23 +86,73 @@ public class CreditRateController {
         return rateService.addGoodEnterpriseData(form, id);
     }
 
+    /**
+     * 新增个人不良行为评定数据(企业)
+     *
+     * @param form 个人不良行为表单
+     * @param id   此表单id
+     * @return 是否成功
+     */
     @PutMapping("/PersonalCreditRateList/enterprise/badBehavior/addData")
     public Boolean addBadPersonData(@RequestBody CreditRate form, Long id) {
         return rateService.addBadPersonData(form, id);
     }
 
+    /**
+     * 新增企业不良行为评定数据(企业)
+     *
+     * @param form 企业不良行为表单
+     * @param id   此表单id
+     * @return 是否成功
+     */
     @PutMapping("/EnterpriseCreditRateList/enterprise/badBehavior/addData")
     public Boolean addBadEnterpriseData(@RequestBody CreditRate form, Long id) {
         return rateService.addBadEnterpriseData(form, id);
     }
 
-    @PostMapping("/PersonalCreditRateList/county/badBehavior/addData")
+    /**
+     * 新增个人不良行为评定数据(县级)
+     *
+     * @param form 个人不良行为表单
+     * @return 是否成功
+     */
+    @PostMapping("/PersonalCreditRateList/county/badBehavior/addData/1")
     public Boolean addCountyBadPersonData(@RequestBody CreditRate form) {
         return rateService.addCountyBadPersonData(form);
     }
 
-    @PostMapping("/EnterpriseCreditRateList/county/badBehavior/addData")
+    /**
+     * 新增企业不良行为评定数据(县级)
+     *
+     * @param form 企业不良行为表单
+     * @return 是否成功
+     */
+    @PostMapping("/EnterpriseCreditRateList/county/badBehavior/addData/1")
     public Boolean addCountyBadEnterpriseData(@RequestBody CreditRate form) {
         return rateService.addCountyBadEnterpriseData(form);
+    }
+
+    /**
+     * 新增个人不良行为复审数据(县级)
+     *
+     * @param form 个人不良行为复审表单
+     * @param id   此表单id
+     * @return 是否成功
+     */
+    @PutMapping("/PersonalCreditRateList/county/badBehavior/addData/2")
+    public Boolean addCountyReviewPersonData(@RequestBody CreditRate form, Long id) {
+        return rateService.addCountyReviewPersonData(form, id);
+    }
+
+    /**
+     * 新增企业不良行为复审数据(县级)
+     *
+     * @param form 企业不良行为复审表单
+     * @param id   此表单id
+     * @return 是否成功
+     */
+    @PutMapping("/EnterpriseCreditRateList/county/badBehavior/addData/2")
+    public Boolean addCountyReviewEnterpriseData(@RequestBody CreditRate form, Long id) {
+        return rateService.addCountyReviewEnterpriseData(form, id);
     }
 }

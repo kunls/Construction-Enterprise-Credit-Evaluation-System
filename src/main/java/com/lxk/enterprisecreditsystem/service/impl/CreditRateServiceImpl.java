@@ -147,6 +147,42 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
     }
 
     @Override
+    public Boolean addCountyReviewPersonData(CreditRate form, Long id) {
+        //1.表单是否为空
+        if (form == null) {
+            return false;
+        }
+        //2.查看数据库是否存在此表单
+        CreditRate result = this.getById(id);
+        //2.1若没有
+        if (result == null) {
+            return false;
+        }
+        //2.2若存在
+        result.setReviewResult(form.getReviewResult());
+        result.setReviewRemark(form.getReviewRemark());
+        return this.saveOrUpdate(result);
+    }
+
+    @Override
+    public Boolean addCountyReviewEnterpriseData(CreditRate form, Long id) {
+        //1.表单是否为空
+        if (form == null) {
+            return false;
+        }
+        //2.查看数据库是否存在此表单
+        CreditRate result = this.getById(id);
+        //2.1若没有
+        if (result == null) {
+            return false;
+        }
+        //2.2若存在
+        result.setReviewResult(form.getReviewResult());
+        result.setReviewRemark(form.getReviewRemark());
+        return this.saveOrUpdate(result);
+    }
+
+    @Override
     public List<CreditRate> getEnterpriseData(Integer page, Integer pageSize, String keyword, String ruleId) {
         return getList(page, pageSize, keyword, ruleId, 2);
     }
