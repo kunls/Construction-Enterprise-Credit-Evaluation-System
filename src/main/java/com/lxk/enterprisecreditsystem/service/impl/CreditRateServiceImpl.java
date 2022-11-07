@@ -122,11 +122,28 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         }
         //2.2若存在
         //Todo 保存企业异议文件
+        //Todo 步骤推进
         //result.setEntAnnexFile();
         result.setEntRemark(form.getEntRemark());
         result.setHasDissent(form.getHasDissent());
         result.setHasKnown(form.getHasKnown());
         return this.saveOrUpdate(result);
+    }
+
+    @Override
+    public Boolean addCountyBadPersonData(CreditRate form) {
+        if (form == null) {
+            return false;
+        }
+        return this.save(form);
+    }
+
+    @Override
+    public Boolean addCountyBadEnterpriseData(CreditRate form) {
+        if (form == null) {
+            return false;
+        }
+        return this.save(form);
     }
 
     @Override

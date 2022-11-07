@@ -95,4 +95,14 @@ public class CreditRateController {
     public Boolean addBadEnterpriseData(@RequestBody CreditRate form, Long id) {
         return rateService.addBadEnterpriseData(form, id);
     }
+
+    @PostMapping("/PersonalCreditRateList/county/badBehavior/addData")
+    public Boolean addCountyBadPersonData(@RequestBody CreditRate form) {
+        return rateService.addCountyBadPersonData(form);
+    }
+
+    @PostMapping("/EnterpriseCreditRateList/county/badBehavior/addData")
+    public Boolean addCountyBadEnterpriseData(@RequestBody CreditRate form) {
+        return rateService.addCountyBadEnterpriseData(form);
+    }
 }
