@@ -35,4 +35,8 @@ public interface CreditRateService extends IService<CreditRate> {
     Boolean addCountyReviewPersonData(CreditRate form, Long id);
 
     Boolean addCountyReviewEnterpriseData(CreditRate form, Long id);
+
+    Boolean addCountyVerifyPersonData(CreditRate form, Long id);
+
+    Boolean addCountyVerifyEnterpriseData(CreditRate form, Long id);
 }

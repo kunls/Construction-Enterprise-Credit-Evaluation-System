@@ -155,4 +155,28 @@ public class CreditRateController {
     public Boolean addCountyReviewEnterpriseData(@RequestBody CreditRate form, Long id) {
         return rateService.addCountyReviewEnterpriseData(form, id);
     }
+
+    /**
+     * 新增个人不良行为初审(县级)
+     *
+     * @param form 个人不良行为初审表单
+     * @param id   此表单id
+     * @return 是否成功
+     */
+    @PutMapping("/PersonalCreditRateList/county/badBehavior/addData/3")
+    public Boolean addCountyVerifyPersonData(@RequestBody CreditRate form, Long id) {
+        return rateService.addCountyVerifyPersonData(form, id);
+    }
+
+    /**
+     * 新增企业不良行为初审(县级)
+     *
+     * @param form 企业不良行为初审表单
+     * @param id   此表单id
+     * @return 是否成功
+     */
+    @PutMapping("/EnterpriseCreditRateList/county/badBehavior/addData/3")
+    public Boolean addCountyVerifyEnterpriseData(@RequestBody CreditRate form, Long id) {
+        return rateService.addCountyVerifyEnterpriseData(form, id);
+    }
 }
