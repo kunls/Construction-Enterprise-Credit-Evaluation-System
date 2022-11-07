@@ -30,11 +30,26 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 
+    /**
+     * 获取个人信用评定列表
+     *
+     * @param page     页码
+     * @param pageSize 页大小
+     * @param keyword  搜索关键词
+     * @param ruleId   规则id
+     * @return 个人信用评定列表
+     */
     @Override
     public List<CreditRate> getPersonData(Integer page, Integer pageSize, String keyword, String ruleId) {
         return getList(page, pageSize, keyword, ruleId, 1);
     }
 
+    /**
+     * 新增个人良好行为评定数据(企业)
+     *
+     * @param form 个人良好行为表单
+     * @return 是否成功
+     */
     @Override
     public Boolean addPersonData(CreditRate form) {
         if (form == null) {
@@ -43,6 +58,12 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         return this.save(form);
     }
 
+    /**
+     * 新增企业良好行为评定数据(企业)
+     *
+     * @param form 企业良好行为表单
+     * @return 是否成功
+     */
     @Override
     public Boolean addEnterpriseData(CreditRate form) {
         if (form == null) {
@@ -51,6 +72,14 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         return this.save(form);
     }
 
+    /**
+     * 编辑县级初审个人良好行为数据(县级)
+     * Todo 添加执行人和执行部门
+     *
+     * @param form 个人良好行为表单
+     * @param id   此表单数据id
+     * @return 是否成功
+     */
     @Override
     public Boolean addGoodPersonData(CreditRate form, Long id) {
         //1.检查表单是否为空
@@ -69,6 +98,14 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         return this.saveOrUpdate(result);
     }
 
+    /**
+     * 编辑县级初审企业良好行为数据(县级)
+     * Todo 添加执行人和执行部门
+     *
+     * @param form 企业良好行为表单
+     * @param id   此表单数据id
+     * @return 是否成功
+     */
     @Override
     public Boolean addGoodEnterpriseData(CreditRate form, Long id) {
         //1.检查表单是否为空
@@ -87,6 +124,13 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         return this.saveOrUpdate(result);
     }
 
+    /**
+     * 新增个人不良行为评定数据(企业)
+     *
+     * @param form 个人不良行为表单
+     * @param id   此表单id
+     * @return 是否成功
+     */
     @Override
     public Boolean addBadPersonData(CreditRate form, Long id) {
         //1.检查表单是否为空
@@ -108,6 +152,13 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         return this.saveOrUpdate(result);
     }
 
+    /**
+     * 新增企业不良行为评定数据(企业)
+     *
+     * @param form 企业不良行为表单
+     * @param id   此表单id
+     * @return 是否成功
+     */
     @Override
     public Boolean addBadEnterpriseData(CreditRate form, Long id) {
         //1.检查表单是否为空
@@ -130,6 +181,12 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         return this.saveOrUpdate(result);
     }
 
+    /**
+     * 新增个人不良行为评定数据(县级)
+     *
+     * @param form 个人不良行为表单
+     * @return 是否成功
+     */
     @Override
     public Boolean addCountyBadPersonData(CreditRate form) {
         if (form == null) {
@@ -138,6 +195,12 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         return this.save(form);
     }
 
+    /**
+     * 新增企业不良行为评定数据(县级)
+     *
+     * @param form 企业不良行为表单
+     * @return 是否成功
+     */
     @Override
     public Boolean addCountyBadEnterpriseData(CreditRate form) {
         if (form == null) {
@@ -146,6 +209,14 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         return this.save(form);
     }
 
+    /**
+     * 新增个人不良行为复审数据(县级)
+     * Todo 添加执行人和执行部门
+     *
+     * @param form 个人不良行为复审表单
+     * @param id   此表单id
+     * @return 是否成功
+     */
     @Override
     public Boolean addCountyReviewPersonData(CreditRate form, Long id) {
         //1.表单是否为空
@@ -164,6 +235,14 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         return this.saveOrUpdate(result);
     }
 
+    /**
+     * 新增企业不良行为复审数据(县级)
+     * Todo 添加执行人和执行部门
+     *
+     * @param form 企业不良行为复审表单
+     * @param id   此表单id
+     * @return 是否成功
+     */
     @Override
     public Boolean addCountyReviewEnterpriseData(CreditRate form, Long id) {
         //1.表单是否为空
@@ -182,6 +261,14 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         return this.saveOrUpdate(result);
     }
 
+    /**
+     * 新增个人不良行为初审(县级)
+     * Todo 添加执行人和执行部门
+     *
+     * @param form 个人不良行为初审表单
+     * @param id   此表单id
+     * @return 是否成功
+     */
     @Override
     public Boolean addCountyVerifyPersonData(CreditRate form, Long id) {
         //1.表单是否为空
@@ -200,6 +287,14 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         return this.saveOrUpdate(result);
     }
 
+    /**
+     * 新增企业不良行为初审(县级)
+     * Todo 添加执行人和执行部门
+     *
+     * @param form 企业不良行为初审表单
+     * @param id   此表单id
+     * @return 是否成功
+     */
     @Override
     public Boolean addCountyVerifyEnterpriseData(CreditRate form, Long id) {
         //1.表单是否为空
@@ -218,6 +313,15 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         return this.saveOrUpdate(result);
     }
 
+    /**
+     * 获取企业信用评定列表
+     *
+     * @param page     页码
+     * @param pageSize 页大小
+     * @param keyword  搜索关键词
+     * @param ruleId   规则id
+     * @return 企业信用评定列表
+     */
     @Override
     public List<CreditRate> getEnterpriseData(Integer page, Integer pageSize, String keyword, String ruleId) {
         return getList(page, pageSize, keyword, ruleId, 2);
