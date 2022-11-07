@@ -1,22 +1,23 @@
 package com.lxk.enterprisecreditsystem.domain;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
 
 /**
  * 总黑名单列表
+ *
  * @TableName total_blacklist_table
  */
-@TableName(value ="total_blacklist_table")
+@TableName(value = "total_blacklist_table")
 @Data
 public class TotalBlacklist implements Serializable {
     /**
-     * 
+     *
      */
     @TableId
     private Long id;
@@ -55,6 +56,26 @@ public class TotalBlacklist implements Serializable {
      * 处罚日期
      */
     private Date punishDate;
+
+    /**
+     * 行为描述
+     */
+    private String content;
+
+    /**
+     * 备注
+     */
+    private String remark;
+
+    /**
+     * 规则Id
+     */
+    private Long ruleId;
+
+    /**
+     * 细则Id
+     */
+    private Long rateNormId;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

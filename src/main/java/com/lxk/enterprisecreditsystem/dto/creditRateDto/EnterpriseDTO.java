@@ -3,7 +3,7 @@ package com.lxk.enterprisecreditsystem.dto.creditRateDto;
 import com.lxk.enterprisecreditsystem.domain.CreditRate;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 public class EnterpriseDTO extends CreditRate {
@@ -12,6 +12,6 @@ public class EnterpriseDTO extends CreditRate {
     private String category;
     private String norm;
     private Integer score;
-    private LocalDateTime handleTime;
+    private Date handleTime;
     private String status;
 }

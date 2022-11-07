@@ -36,6 +36,22 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
     }
 
     @Override
+    public Boolean addPersonData(CreditRate form) {
+        if (form == null) {
+            return false;
+        }
+        return this.save(form);
+    }
+
+    @Override
+    public Boolean addEnterpriseData(CreditRate form) {
+        if (form == null) {
+            return false;
+        }
+        return this.save(form);
+    }
+
+    @Override
     public List<CreditRate> getEnterpriseData(Integer page, Integer pageSize, String keyword, String ruleId) {
         return getList(page, pageSize, keyword, ruleId, 2);
     }

@@ -3,7 +3,6 @@ package com.lxk.enterprisecreditsystem.controller;
 import com.lxk.enterprisecreditsystem.domain.Blacklist;
 import com.lxk.enterprisecreditsystem.domain.BlacklistRecord;
 import com.lxk.enterprisecreditsystem.domain.TotalBlacklist;
-import com.lxk.enterprisecreditsystem.dto.blacklistDto.TotalBlacklistDTO;
 import com.lxk.enterprisecreditsystem.service.BlacklistRecordService;
 import com.lxk.enterprisecreditsystem.service.BlacklistService;
 import com.lxk.enterprisecreditsystem.service.TotalBlacklistService;
@@ -104,18 +103,36 @@ public class BlacklistController {
         return blacklistRecordService.getRecord(page, pageSize, keyword);
     }
 
+    /**
+     * 增加个人黑名单列表数据
+     *
+     * @param form 个人表单
+     * @return 是否成功
+     */
     @PostMapping("/PersonalBlacklist/addData")
     public Boolean addPersonData(@RequestBody Blacklist form) {
         return blacklistService.addPersonData(form);
     }
 
+    /**
+     * 增加企业黑名单列表数据
+     *
+     * @param form 企业表单
+     * @return 是否成功
+     */
     @PostMapping("/EnterpriseBlacklist/addData")
     public Boolean addEnterpriseData(@RequestBody Blacklist form) {
         return blacklistService.addEnterpriseData(form);
     }
 
+    /**
+     * 增加总黑名单数据
+     *
+     * @param form 表单
+     * @return 是否成功
+     */
     @PostMapping("/Blacklist/addData")
-    public Boolean addBlacklistData(@RequestBody TotalBlacklistDTO form) {
+    public Boolean addBlacklistData(@RequestBody TotalBlacklist form) {
         return totalBlacklistService.addBlacklistData(form);
     }
 }

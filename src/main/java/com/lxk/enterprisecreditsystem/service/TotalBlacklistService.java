@@ -2,7 +2,6 @@ package com.lxk.enterprisecreditsystem.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lxk.enterprisecreditsystem.domain.TotalBlacklist;
-import com.lxk.enterprisecreditsystem.dto.blacklistDto.TotalBlacklistDTO;
 
 import java.util.List;
 
@@ -15,5 +14,5 @@ public interface TotalBlacklistService extends IService<TotalBlacklist> {
 
     List<TotalBlacklist> getTotalBlacklist(Integer page, Integer pageSize, String keyword);
 
-    Boolean addBlacklistData(TotalBlacklistDTO form);
+    Boolean addBlacklistData(TotalBlacklist form);
 }

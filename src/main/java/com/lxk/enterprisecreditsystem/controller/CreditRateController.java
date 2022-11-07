@@ -3,6 +3,8 @@ package com.lxk.enterprisecreditsystem.controller;
 import com.lxk.enterprisecreditsystem.domain.CreditRate;
 import com.lxk.enterprisecreditsystem.service.CreditRateService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -41,4 +43,13 @@ public class CreditRateController {
         return rateService.getPersonData(page, pageSize, keyword, ruleId);
     }
 
+    @PostMapping("/PersonalCreditRateList/addData")
+    public Boolean addPersonData(@RequestBody CreditRate form) {
+        return rateService.addPersonData(form);
+    }
+
+    @PostMapping("/EnterpriseCreditRateList/addData")
+    public Boolean addEnterpriseData(@RequestBody CreditRate form) {
+        return rateService.addEnterpriseData(form);
+    }
 }

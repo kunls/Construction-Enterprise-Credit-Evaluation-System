@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lxk.enterprisecreditsystem.domain.TotalBlacklist;
-import com.lxk.enterprisecreditsystem.dto.blacklistDto.TotalBlacklistDTO;
 import com.lxk.enterprisecreditsystem.mapper.TotalBlacklistMapper;
 import com.lxk.enterprisecreditsystem.service.TotalBlacklistService;
 import org.springframework.stereotype.Service;
@@ -42,7 +41,7 @@ public class TotalBlacklistServiceImpl extends ServiceImpl<TotalBlacklistMapper,
     }
 
     @Override
-    public Boolean addBlacklistData(TotalBlacklistDTO form) {
+    public Boolean addBlacklistData(TotalBlacklist form) {
         if (form == null) {
             return false;
         }
