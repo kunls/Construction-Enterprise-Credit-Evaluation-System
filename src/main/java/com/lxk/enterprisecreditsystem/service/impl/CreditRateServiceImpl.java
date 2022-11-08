@@ -52,6 +52,7 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
      */
     @Override
     public Boolean addPersonData(CreditRate form) {
+        //1.检验表单是否为空
         if (form == null) {
             return false;
         }

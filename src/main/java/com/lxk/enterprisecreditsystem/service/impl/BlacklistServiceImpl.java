@@ -6,8 +6,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lxk.enterprisecreditsystem.domain.Blacklist;
 import com.lxk.enterprisecreditsystem.mapper.BlacklistMapper;
 import com.lxk.enterprisecreditsystem.service.BlacklistService;
+import com.lxk.enterprisecreditsystem.service.strategy.SearchStrategyContext;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -18,6 +20,8 @@ import java.util.List;
 @Service
 public class BlacklistServiceImpl extends ServiceImpl<BlacklistMapper, Blacklist>
         implements BlacklistService {
+    @Resource
+    private SearchStrategyContext searchStrategyContext;
 
     @Override
     public List<Blacklist> getPersonBlacklist(Integer page, Integer pageSize, String keyword) {
