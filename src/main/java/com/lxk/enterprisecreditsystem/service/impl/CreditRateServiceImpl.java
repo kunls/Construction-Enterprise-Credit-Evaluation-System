@@ -48,6 +48,24 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         return searchStrategyContext.searchHandle(SearchStrategyEnum.SEARCH_BY_ID_OR_NAME, page, pageSize, keyword, null, ruleId, this);
     }
 
+    @Override
+    public List<CreditRate> getPersonData(Integer page, Integer pageSize, String keyword) {
+        return searchStrategyContext.searchHandle(SearchStrategyEnum.SEARCH_BY_ID_OR_NAME, page, pageSize, keyword, 1, null, this);
+    }
+
+    /**
+     * 获取企业信用记录
+     *
+     * @param page     页码
+     * @param pageSize 页大小
+     * @param keyword  查询关键词
+     * @return 查询结果
+     */
+    @Override
+    public List<CreditRate> getEnterpriseData(Integer page, Integer pageSize, String keyword) {
+        return searchStrategyContext.searchHandle(SearchStrategyEnum.SEARCH_BY_ID_OR_NAME, page, pageSize, keyword, 2, null, this);
+    }
+
     /**
      * 新增个人良好行为评定数据(企业)
      *

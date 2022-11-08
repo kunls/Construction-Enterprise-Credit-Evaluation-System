@@ -47,6 +47,11 @@ public class CreditRate implements Serializable {
     private Integer score;
 
     /**
+     * 完结时间
+     */
+    private Date finishDate;
+
+    /**
      * 处理人员
      */
     private String handler;

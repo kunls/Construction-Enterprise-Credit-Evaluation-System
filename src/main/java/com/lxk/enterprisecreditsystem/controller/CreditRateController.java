@@ -179,4 +179,22 @@ public class CreditRateController {
     public Boolean addCountyVerifyEnterpriseData(@RequestBody CreditRate form, Long id) {
         return rateService.addCountyVerifyEnterpriseData(form, id);
     }
+
+    @GetMapping("/PersonalCreditRateRecord/getData")
+    public List<CreditRate> getPersonData(Integer page, Integer pageSize, String keyword) {
+        return rateService.getPersonData(page, pageSize, keyword);
+    }
+
+    /**
+     * 企业信用评定列表
+     *
+     * @param page     页码
+     * @param pageSize 页大小
+     * @param keyword  搜索关键词
+     * @return 企业信用评定列表
+     */
+    @GetMapping("/EnterpriseCreditRateRecord/getData")
+    public List<CreditRate> getEnterpriseData(Integer page, Integer pageSize, String keyword) {
+        return rateService.getEnterpriseData(page, pageSize, keyword);
+    }
 }

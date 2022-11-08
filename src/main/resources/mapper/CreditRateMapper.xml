@@ -11,6 +11,7 @@
             <result property="category" column="category" jdbcType="VARCHAR"/>
             <result property="norm" column="norm" jdbcType="VARCHAR"/>
             <result property="score" column="score" jdbcType="INTEGER"/>
+            <result property="finishDate" column="finish_date" jdbcType="TIMESTAMP"/>
             <result property="handler" column="handler" jdbcType="VARCHAR"/>
             <result property="handleDep" column="handle_dep" jdbcType="VARCHAR"/>
             <result property="address" column="address" jdbcType="VARCHAR"/>
@@ -48,16 +49,16 @@
     <sql id="Base_Column_List">
         id,name,id_card,
         category,norm,score,
-        handler,handle_dep,address,
-        handle_time,status,content,
-        remark,behavior_time,rule_id,
-        flag,role,annex_file,
-        has_known,has_dissent,ent_remark,
-        ent_annex_file,review_dep,review_person,
-        review_result,review_time,review_remark,
-        county_dep,county_person,county_verify_result,
-        county_verify_time,county_remark,city_dep,
-        city_person,city_verify_result,city_verify_time,
-        city_remark,behavior_type
+        finish_date,handler,handle_dep,
+        address,handle_time,status,
+        content,remark,behavior_time,
+        rule_id,flag,role,
+        annex_file,has_known,has_dissent,
+        ent_remark,ent_annex_file,review_dep,
+        review_person,review_result,review_time,
+        review_remark,county_dep,county_person,
+        county_verify_result,county_verify_time,county_remark,
+        city_dep,city_person,city_verify_result,
+        city_verify_time,city_remark,behavior_type
     </sql>
 </mapper>
