@@ -22,7 +22,7 @@ public class CreditRateController {
      * @return 企业信用评定列表
      */
     @GetMapping("/EnterpriseCreditRateList/getData")
-    public List<CreditRate> getEnterpriseData(Integer page, Integer pageSize, String keyword, String ruleId) {
+    public List<CreditRate> getEnterpriseData(Integer page, Integer pageSize, String keyword, Long ruleId) {
         return rateService.getEnterpriseData(page, pageSize, keyword, ruleId);
     }
 
@@ -36,7 +36,7 @@ public class CreditRateController {
      * @return 个人信用评定列表
      */
     @GetMapping("/PersonalCreditRateList/getData")
-    public List<CreditRate> getPersonData(Integer page, Integer pageSize, String keyword, String ruleId) {
+    public List<CreditRate> getPersonData(Integer page, Integer pageSize, String keyword, Long ruleId) {
         return rateService.getPersonData(page, pageSize, keyword, ruleId);
     }
 

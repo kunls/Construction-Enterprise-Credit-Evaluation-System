@@ -6,8 +6,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lxk.enterprisecreditsystem.domain.CreditRate;
 import com.lxk.enterprisecreditsystem.dto.creditRateDto.EnterpriseDTO;
 import com.lxk.enterprisecreditsystem.dto.creditRateDto.PersonDTO;
+import com.lxk.enterprisecreditsystem.enums.SearchStrategyEnum;
 import com.lxk.enterprisecreditsystem.mapper.CreditRateMapper;
 import com.lxk.enterprisecreditsystem.service.CreditRateService;
+import com.lxk.enterprisecreditsystem.service.searchStrategy.SearchStrategyContext;
 import com.lxk.enterprisecreditsystem.utils.UserHolder;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -29,6 +31,8 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         implements CreditRateService {
     @Resource
     private StringRedisTemplate stringRedisTemplate;
+    @Resource
+    private SearchStrategyContext searchStrategyContext;
 
     /**
      * 获取个人信用评定列表
@@ -40,8 +44,8 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
      * @return 个人信用评定列表
      */
     @Override
-    public List<CreditRate> getPersonData(Integer page, Integer pageSize, String keyword, String ruleId) {
-        return getList(page, pageSize, keyword, ruleId, 1);
+    public List<CreditRate> getPersonData(Integer page, Integer pageSize, String keyword, Long ruleId) {
+        return searchStrategyContext.searchHandle(SearchStrategyEnum.SEARCH_BY_ID_OR_NAME, page, pageSize, keyword, null, ruleId, this);
     }
 
     /**
@@ -324,7 +328,7 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
      * @return 企业信用评定列表
      */
     @Override
-    public List<CreditRate> getEnterpriseData(Integer page, Integer pageSize, String keyword, String ruleId) {
+    public List<CreditRate> getEnterpriseData(Integer page, Integer pageSize, String keyword, Long ruleId) {
         return getList(page, pageSize, keyword, ruleId, 2);
     }
 
@@ -351,7 +355,7 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
      * @param role     企业or个人
      * @return 企业or个人信用评定列表
      */
-    private List<CreditRate> getList(Integer page, Integer pageSize, String keyword, String ruleId, Integer role) {
+    private List<CreditRate> getList(Integer page, Integer pageSize, String keyword, Long ruleId, Integer role) {
         LambdaQueryWrapper<CreditRate> wrapper = new LambdaQueryWrapper<>();
         //1.准备分页
         Page<CreditRate> pages = new Page<>(page, pageSize);
@@ -361,7 +365,7 @@ public class CreditRateServiceImpl extends ServiceImpl<CreditRateMapper, CreditR
         }
         wrapper.eq(CreditRate::getRole, role);
         //3.是否携带规则
-        if (ruleId != null && !ruleId.equals("")) {
+        if (ruleId != null) {
             wrapper.eq(CreditRate::getRuleId, ruleId);
         }
         //4.验证登陆者身份

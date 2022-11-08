@@ -1,13 +1,14 @@
 package com.lxk.enterprisecreditsystem.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lxk.enterprisecreditsystem.domain.TotalBlacklist;
+import com.lxk.enterprisecreditsystem.enums.SearchStrategyEnum;
 import com.lxk.enterprisecreditsystem.mapper.TotalBlacklistMapper;
 import com.lxk.enterprisecreditsystem.service.TotalBlacklistService;
+import com.lxk.enterprisecreditsystem.service.searchStrategy.SearchStrategyContext;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -18,6 +19,9 @@ import java.util.List;
 @Service
 public class TotalBlacklistServiceImpl extends ServiceImpl<TotalBlacklistMapper, TotalBlacklist>
         implements TotalBlacklistService {
+    @Resource
+    private SearchStrategyContext searchStrategyContext;
+
     /**
      * 获取总黑名单列表
      *
@@ -28,16 +32,7 @@ public class TotalBlacklistServiceImpl extends ServiceImpl<TotalBlacklistMapper,
      */
     @Override
     public List<TotalBlacklist> getTotalBlacklist(Integer page, Integer pageSize, String keyword) {
-        LambdaQueryWrapper<TotalBlacklist> wrapper = new LambdaQueryWrapper<>();
-        //1.准备分页
-        Page<TotalBlacklist> pages = new Page<>(page, pageSize);
-        //2.是否携带关键字
-        if (keyword != null && !keyword.equals("")) {
-            wrapper.like(TotalBlacklist::getName, keyword).or().like(TotalBlacklist::getCreditCode, keyword);
-        }
-        //3.查询
-        Page<TotalBlacklist> result = this.page(pages, wrapper);
-        return result.getRecords();
+        return searchStrategyContext.searchHandle(SearchStrategyEnum.SEARCH_BY_NAME, page, pageSize, keyword, null, null, this);
     }
 
     @Override

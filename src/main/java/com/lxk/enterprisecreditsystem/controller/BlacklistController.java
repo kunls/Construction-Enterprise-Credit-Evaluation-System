@@ -55,12 +55,11 @@ public class BlacklistController {
      * @param page     页码
      * @param pageSize 页大小
      * @param keyword  搜索关键词
-     * @param idCard   身份证号
      * @return 个人黑名单历史记录
      */
     @GetMapping("/PersonalBlacklistHistory/getData")
-    public List<Blacklist> getPersonHistory(Integer page, Integer pageSize, String keyword, String idCard) {
-        return blacklistService.getPersonHistory(page, pageSize, keyword, idCard);
+    public List<Blacklist> getPersonHistory(Integer page, Integer pageSize, String keyword) {
+        return blacklistService.getPersonHistory(page, pageSize, keyword);
     }
 
     /**
@@ -69,12 +68,11 @@ public class BlacklistController {
      * @param page     页码
      * @param pageSize 页大小
      * @param keyword  搜索关键词
-     * @param idCard   统一社会信用代码
      * @return 企业黑名单历史记录
      */
     @GetMapping("/EnterpriseBlacklistHistory/getData")
-    public List<Blacklist> getEnterpriseHistory(Integer page, Integer pageSize, String keyword, String idCard) {
-        return blacklistService.getEnterpriseHistory(page, pageSize, keyword, idCard);
+    public List<Blacklist> getEnterpriseHistory(Integer page, Integer pageSize, String keyword) {
+        return blacklistService.getEnterpriseHistory(page, pageSize, keyword);
     }
 
     /**

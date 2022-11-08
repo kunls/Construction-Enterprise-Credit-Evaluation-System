@@ -6,7 +6,8 @@ import lombok.Getter;
 public enum SearchStrategyEnum {
     SEARCH_BY_NAME("name", "nameSearchStrategy", "根据名称查询"),
     SEARCH_BY_ID("id", "idSearchStrategy", "根据id查询"),
-    SEARCH_BY_ID_OR_NAME("id_or_name", "idOrNameSearchStrategy", "根据id或名称查询");
+    SEARCH_BY_ID_OR_NAME("id_or_name", "idOrNameSearchStrategy", "根据id或名称查询"),
+    SEARCH_BY_NORM("norm", "normSearchStrategy", "根据标准名称查询");
     /**
      * 查询策略code
      */

@@ -4,10 +4,13 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lxk.enterprisecreditsystem.domain.CreditRecord;
+import com.lxk.enterprisecreditsystem.enums.SearchStrategyEnum;
 import com.lxk.enterprisecreditsystem.mapper.CreditRecordMapper;
 import com.lxk.enterprisecreditsystem.service.CreditRecordService;
+import com.lxk.enterprisecreditsystem.service.searchStrategy.SearchStrategyContext;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -18,15 +21,33 @@ import java.util.List;
 @Service
 public class CreditRecordServiceImpl extends ServiceImpl<CreditRecordMapper, CreditRecord>
         implements CreditRecordService {
+    @Resource
+    private SearchStrategyContext searchStrategyContext;
 
+    /**
+     * 获取个人信用记录
+     *
+     * @param page     页码
+     * @param pageSize 页大小
+     * @param keyword  查询关键词
+     * @return 查询结果
+     */
     @Override
     public List<CreditRecord> getPersonData(Integer page, Integer pageSize, String keyword) {
-        return getRecordList(page, pageSize, keyword, 1);
+        return searchStrategyContext.searchHandle(SearchStrategyEnum.SEARCH_BY_ID_OR_NAME, page, pageSize, keyword, 1, null, this);
     }
 
+    /**
+     * 获取企业信用记录
+     *
+     * @param page     页码
+     * @param pageSize 页大小
+     * @param keyword  查询关键词
+     * @return 查询结果
+     */
     @Override
     public List<CreditRecord> getEnterpriseData(Integer page, Integer pageSize, String keyword) {
-        return getRecordList(page, pageSize, keyword, 2);
+        return searchStrategyContext.searchHandle(SearchStrategyEnum.SEARCH_BY_ID_OR_NAME, page, pageSize, keyword, 2, null, this);
     }
 
     /**

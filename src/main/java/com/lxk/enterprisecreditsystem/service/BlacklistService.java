@@ -16,9 +16,9 @@ public interface BlacklistService extends IService<Blacklist> {
 
     List<Blacklist> getEnterpriseBlacklist(Integer page, Integer pageSize, String keyword);
 
-    List<Blacklist> getPersonHistory(Integer page, Integer pageSize, String keyword, String idCard);
+    List<Blacklist> getPersonHistory(Integer page, Integer pageSize, String keyword);
 
-    List<Blacklist> getEnterpriseHistory(Integer page, Integer pageSize, String keyword, String idCard);
+    List<Blacklist> getEnterpriseHistory(Integer page, Integer pageSize, String keyword);
 
     Boolean addPersonData(Blacklist form);
 

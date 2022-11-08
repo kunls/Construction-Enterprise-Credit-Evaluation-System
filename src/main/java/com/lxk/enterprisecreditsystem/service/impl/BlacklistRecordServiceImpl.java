@@ -5,7 +5,7 @@ import com.lxk.enterprisecreditsystem.domain.BlacklistRecord;
 import com.lxk.enterprisecreditsystem.enums.SearchStrategyEnum;
 import com.lxk.enterprisecreditsystem.mapper.BlacklistRecordMapper;
 import com.lxk.enterprisecreditsystem.service.BlacklistRecordService;
-import com.lxk.enterprisecreditsystem.service.strategy.SearchStrategyContext;
+import com.lxk.enterprisecreditsystem.service.searchStrategy.SearchStrategyContext;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -33,7 +33,7 @@ public class BlacklistRecordServiceImpl extends ServiceImpl<BlacklistRecordMappe
     @Override
     public List<BlacklistRecord> getRecord(Integer page, Integer pageSize, String keyword) {
         //根据名称查询
-        return searchStrategyContext.searchHandle(SearchStrategyEnum.SEARCH_BY_NAME, page, pageSize, keyword, this);
+        return searchStrategyContext.searchHandle(SearchStrategyEnum.SEARCH_BY_NAME, page, pageSize, keyword, null, null, this);
     }
 }
 

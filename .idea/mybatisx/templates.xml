@@ -45,8 +45,8 @@
             <option name="tableUIInfoList">
               <list>
                 <TableUIInfo>
-                  <option name="className" value="CreditRate" />
-                  <option name="tableName" value="credit_rate_table" />
+                  <option name="className" value="User" />
+                  <option name="tableName" value="user_table" />
                 </TableUIInfo>
               </list>
             </option>

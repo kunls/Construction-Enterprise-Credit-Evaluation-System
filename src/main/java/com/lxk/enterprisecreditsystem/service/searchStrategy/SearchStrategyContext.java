@@ -1,4 +1,4 @@
-package com.lxk.enterprisecreditsystem.service.strategy;
+package com.lxk.enterprisecreditsystem.service.searchStrategy;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lxk.enterprisecreditsystem.enums.SearchStrategyEnum;
@@ -28,8 +28,8 @@ public class SearchStrategyContext {
      * @param <T>                查询对象实体类型
      * @return 查询结果
      */
-    public <T> List<T> searchHandle(SearchStrategyEnum searchStrategyEnum, Integer page, Integer pageSize, String keyword, IService<T> service) {
+    public <T> List<T> searchHandle(SearchStrategyEnum searchStrategyEnum, Integer page, Integer pageSize, String keyword, Integer role, Long ruleId, IService<T> service) {
         SearchStrategy searchStrategy = searchStrategyFactory.getSearchStrategy(searchStrategyEnum);
-        return searchStrategy.getList(page, pageSize, keyword, null, service);
+        return searchStrategy.getList(page, pageSize, keyword, role, ruleId, service);
     }
 }

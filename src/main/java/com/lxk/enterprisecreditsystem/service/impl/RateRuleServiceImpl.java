@@ -1,13 +1,14 @@
 package com.lxk.enterprisecreditsystem.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lxk.enterprisecreditsystem.domain.RateRule;
+import com.lxk.enterprisecreditsystem.enums.SearchStrategyEnum;
 import com.lxk.enterprisecreditsystem.mapper.RateRuleMapper;
 import com.lxk.enterprisecreditsystem.service.RateRuleService;
+import com.lxk.enterprisecreditsystem.service.searchStrategy.SearchStrategyContext;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -18,6 +19,9 @@ import java.util.List;
 @Service
 public class RateRuleServiceImpl extends ServiceImpl<RateRuleMapper, RateRule>
         implements RateRuleService {
+    @Resource
+    private SearchStrategyContext searchStrategyContext;
+
     /**
      * 获取信用评价规则设定列表
      *
@@ -28,18 +32,7 @@ public class RateRuleServiceImpl extends ServiceImpl<RateRuleMapper, RateRule>
      */
     @Override
     public List<RateRule> getData(Integer page, Integer pageSize, String keyword) {
-        LambdaQueryWrapper<RateRule> wrapper = new LambdaQueryWrapper<>();
-        //1.准备分页
-        Page<RateRule> pages = new Page<>();
-        //2.是否携带关键字
-        if (keyword != null && !keyword.equals("")) {
-            //2.根据规则名称和信用类型查询
-            wrapper.like(RateRule::getName, keyword).or().like(RateRule::getType, keyword);
-        }
-        //Todo 不确定对哪层可见
-        //3.查询
-        Page<RateRule> result = this.page(pages, wrapper);
-        return result.getRecords();
+        return searchStrategyContext.searchHandle(SearchStrategyEnum.SEARCH_BY_NAME, page, pageSize, keyword, null, null, this);
     }
 }
 

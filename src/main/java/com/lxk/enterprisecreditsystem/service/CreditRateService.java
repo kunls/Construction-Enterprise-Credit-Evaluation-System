@@ -12,9 +12,9 @@ import java.util.List;
  */
 public interface CreditRateService extends IService<CreditRate> {
 
-    List<CreditRate> getEnterpriseData(Integer page, Integer pageSize, String keyword, String ruleId);
+    List<CreditRate> getEnterpriseData(Integer page, Integer pageSize, String keyword, Long ruleId);
 
-    List<CreditRate> getPersonData(Integer page, Integer pageSize, String keyword, String ruleId);
+    List<CreditRate> getPersonData(Integer page, Integer pageSize, String keyword, Long ruleId);
 
     Boolean addPersonData(CreditRate form);
 
